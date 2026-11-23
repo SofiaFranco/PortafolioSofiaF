@@ -117,6 +117,22 @@
   .paper .link{ font-family:'Fraunces', serif; font-weight:250; font-size:16px; color:var(--signal); margin-bottom:8px; }
   .paper p{ font-size:14.5px; line-height:1.6; opacity:0.75; max-width:640px; }
   .paper .venue{ font-family:'IBM Plex Mono', monospace; font-size:11px; opacity:0.55; text-transform:uppercase; margin-top:8px; display:inline-block; }
+  /* papers publicados: imagen, enlace al paper y enlace al póster */
+  /* imagen a la izquierda del párrafo, con la misma altura que el párrafo */
+  .paper .paper-body{ display:flex; gap:18px; align-items:stretch; margin-bottom:12px; }
+  .paper .paper-img{ position:relative; flex:0 0 190px; border-radius:6px; overflow:hidden; background:#e4d8c4; }
+  .paper .paper-img img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  /* .top: recorta desde arriba (se ve la parte superior de la imagen) */
+  .paper .paper-img.top img{ object-position:top; }
+  /* .full: imagen horizontal completa, sin recortar, con su proporción original */
+  .paper .paper-img.full{ flex:0 0 300px; align-self:center; background:none; }
+  .paper .paper-img.full img{ position:static; height:auto; display:block; }
+  /* el padding hace que la imagen sobresalga ~2 líneas arriba y abajo del texto */
+  .paper .paper-body p{ flex:1; padding:3.2em 0; }
+  .paper a.link{ display:inline-block; text-decoration:none; word-break:break-all; }
+  .paper a.link:hover{ text-decoration:underline; }
+  .paper .poster{ display:block; margin-top:6px; font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--signal); text-decoration:none; }
+  .paper .poster:hover{ text-decoration:underline; }
   /* proyectos técnicos: toda la fila es un enlace a proyectos-detalle.html */
   a.paper.tech{ color:inherit; text-decoration:none; transition:background .2s; border-radius:4px; }
   a.paper.tech:hover{ background:rgba(193,68,45,0.06); }
@@ -194,6 +210,10 @@
   @media (max-width:760px){
     .who-grid{ grid-template-columns:1fr; }
     .paper{ grid-template-columns:1fr; }
+    .paper .paper-body{ flex-direction:column; }
+    .paper .paper-img{ flex:none; height:200px; }
+    .paper .paper-body p{ padding:0; }
+    .paper .paper-img.full{ height:auto; }
     .gallery{ grid-template-columns:1fr 1fr; }
   }
 </style>
@@ -268,8 +288,13 @@
         <div class="year">2024</div>
         <div>
           <h3 class="i18n" data-en="Design and Manufacture of a 3D-Printed Exoskeleton for Hand Rehabilitation in Osteoarthritis.">Design and Manufacture of a 3D-Printed Exoskeleton for Hand Rehabilitation in Osteoarthritis.</h3>
+          <!-- EDITA AQUÍ: imagen, enlace y póster del paper -->
+          <div class="paper-body">
+          <div class="paper-img top"><img src="Paper1.png" alt="Exoesqueleto de mano impreso en 3D"></div>
           <p class="i18n" data-en="This project proposes a lightweight, flexible, and affordable 3D-printed hand exoskeleton to support at-home physiotherapy for women over 65 with grade II osteoarthritis. The device combines flexible 3D-printed actuators, a cable-driven mechanism, and electronic control using a flex sensor, microcontroller, and servomotor to assist hand movement.">Este proyecto propone un exoesqueleto de mano ligero, flexible y económico, fabricado mediante impresión 3D, para apoyar la fisioterapia en casa de mujeres mayores de 65 años con osteoartritis de grado II. El dispositivo combina actuadores flexibles impresos en 3D, un mecanismo de cables y un sistema de control electrónico mediante un sensor flex, microcontrolador y servomotor para asistir el movimiento de la mano.</p>
-          <span class="link">https://ieeexplore.ieee.org/document/10755672</span></p>
+          </div>
+          <a class="link" href="https://ieeexplore.ieee.org/document/10755672" target="_blank" rel="noopener">https://ieeexplore.ieee.org/document/10755672</a>
+          <a class="poster i18n" data-en="See poster here →" href="Paper1.pdf" target="_blank" rel="noopener">Ver póster aquí →</a>
           <span class="venue">IEEE Andescon - Cusco, Perú</span>
         </div>
       </div>
@@ -277,8 +302,13 @@
         <div class="year">2023</div>
         <div>
           <h3 class="i18n" data-en="Design, Manufacturing and Mechanical Evaluation of a 3D-Printed Customized Wrist–Hand Orthosis for the Treatment of De Quervain Tenosynovitis">Design, Manufacturing and Mechanical Evaluation of a 3D-Printed Customized Wrist–Hand Orthosis for the Treatment of De Quervain Tenosynovitis</h3>
+          <!-- EDITA AQUÍ: imagen, enlace y póster del paper -->
+          <div class="paper-body">
+          <div class="paper-img full"><img src="Paper2.png" alt="Órtesis de muñeca y mano impresa en 3D"></div>
           <p class="i18n" data-en="This project develops a customized 3D-printed wrist-hand orthosis for treating De Quervain’s tenosynovitis, aiming to improve fit and personalization compared with conventional orthoses. The device was successfully fabricated in a short time, with material characterization and mechanical testing confirming its fit and structural performance in different positions.">Este proyecto desarrolla una órtesis de muñeca y mano personalizada mediante impresión 3D para el tratamiento de la tenosinovitis de De Quervain, buscando mejorar el ajuste y la personalización frente a las órtesis convencionales. El dispositivo fue fabricado exitosamente en poco tiempo, realizando pruebas de caracterización del material y ensayos mecánicos para evaluar su ajuste y resistencia en diferentes posiciones.</p>
-          <span class="link">https://www.mdpi.com/2673-4591/83/1/2</span></p>
+          </div>
+          <a class="link" href="https://www.mdpi.com/2673-4591/83/1/2" target="_blank" rel="noopener">https://www.mdpi.com/2673-4591/83/1/2</a>
+          <a class="poster i18n" data-en="See poster here →" href="Paper2.pdf" target="_blank" rel="noopener">Ver póster aquí →</a>
           <span class="venue">CITIIC - Lima, Perú</span>
         </div>
       </div>
@@ -438,7 +468,7 @@
 <section id="taller">
   <div class="wrap">
     <div class="kicker i18n" data-en="03 — Creative workshop">03 — Taller creativo</div>
-    <h2 class="section-title i18n" data-en="Experiments in yarn, PLA, and generative form.">Experimentos en lana, PLA y forma generativa.</h2>
+    <h2 class="section-title i18n" data-en="Experiments in yarn, PLA, and generative design.">Experimentos en lana, PLA y diseño generativo.</h2>
     <!-- EDITA AQUÍ: cada .gitem es una pieza. Cambia el background del .thumb por tu imagen real: style="background:url('assets/tu-foto.jpg') center/cover" -->
     <div class="gallery">
       <a class="gitem" href="taller-detalle.html#pieza-1">
